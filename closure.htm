@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="yellow">Yellow</button>
+    <button id="red">Red</button>
+</body>
+<script>
+    // document.querySelector('#yellow').onclick = function(){
+    //     document.body.style.backgroundColor='yellow'
+    // }
+    // document.querySelector("#red").onclick = function(){
+    //     document.body.style.backgroundColor='red'
+    // }
+
+    function clickHandler(color) {
+        //  if this is done it will direct call the function
+        // document.body.style.backgroundColor = `${color}`
+
+        // here the function definition has changed
+       return function(){
+            document.body.style.backgroundColor = `${color}`
+        } 
+    }
+    document.querySelector('#yellow').onclick = clickHandler('yellow')
+    document.querySelector('#red').onclick = clickHandler('red')
+
+    //  When the script is executed, the outer function clickHandler runs for each button (#yellow and #red). It creates a closure and returns the inner function for each button.
+    
+    // At this point, the inner function (which was returned by clickHandler) is assigned to the onclick event of the respective buttons.
+
+    // Since, no buttons have been clicked yet, so the closures are stored in memory, ready to be used.
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            border: 2px solid;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="content">
+        <div id="bird" class="box">bird</div>
+        <div id="cat" class="box">cat</div>
+        <div id="dog" class="box">dog</div>
+        <div id="parrot" class="box">parrot</div>
+        <a id="google" href="https://google.com">Google</a>
+    </ul>
+
+</body>
+<script>
+    // document.getElementById("bird").onclick = function(){
+    //     alert("Bird is clicked!!")
+    // }
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // alykey, ctrlkey, shiftkey, keyCode
+
+    document.getElementById("content").addEventListener("click", function (e) {
+        console.log("ul clicked");
+    }, false)
+    //  this is event propagation
+    // 1.event bubbling , 2.envent capturing
+    // false is a by default feature
+
+    document.getElementById("bird").addEventListener("click", function (e) {
+        console.log("box clicked");
+        e.stopPropagation();
+    }, false)
+
+    document.getElementById("google").addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("google clicked");     
+    },false)
+
+    // document.getElementById("content").addEventListener("click", function(e){
+    //     // e.target tell about source of click
+    //     console.log(e.target);
+    //     console.log(e.target.parentNode);
+    // })
+
+    // remove function()
+    document.getElementById("content").addEventListener("click", function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName === "DIV"){
+            let removeIt = e.target.parentNode
+            removeIt.removeChild(e.target)
+            // removeIt.parentNode.removeChild(removeIt)
+        }
+    })
+</script>
+
+</html>

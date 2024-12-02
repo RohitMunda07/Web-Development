@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-dark {
+            background-color: #212212;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <h1 id="heading" class="title">DOM Manipulation</h1>
+    <p id="para">
+        Lorem ipsum dolor sit amet.
+
+        <li class="list-item">1</li>
+        <li class="list-item">2</li>
+        <li class="list-item">3</li>
+        <li class="list-item">4</li>
+
+
+    </p>
+
+    <script>
+        const title = document.getElementById('heading');
+        title.style.backgroundColor = "red";
+        title.style.color = "blue";
+        title.innerText = "This is written by DOM";
+        const cls = document.getElementsByClassName('title');
+        cls.className;
+        console.log(cls)
+
+    </script>
+</body>
+
+</html>
